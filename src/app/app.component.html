@@ -1,0 +1,18 @@
+<mat-toolbar class="custom-toolbar">
+  <div class="mat-toolbar-group-left">
+      <div class="flex flex-row align-items-center">
+          <h4 class="ml-3 text-white">Virtual Care Management</h4>
+      </div>
+  </div>
+  <mat-icon class="icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+</mat-toolbar>
+<div [ngClass]="'col-10 col-offset-1 mt-5'">
+  <div class="loading-overlay" *ngIf="loading$ | async">
+      <mat-progress-spinner
+        mode="indeterminate"
+        color="primary"
+        diameter="50">
+      </mat-progress-spinner>
+    </div>
+  <router-outlet></router-outlet>
+</div>
