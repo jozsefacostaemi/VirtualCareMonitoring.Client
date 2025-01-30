@@ -16,14 +16,22 @@ export class ChartsService {
     return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetQuantityByState`);
   }
 
-  getChart(): Observable<MetadataResponse<any>> {
-    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/chart`);
+  getsystem_cpu_usage(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetUsageCPU`);
   }
 
- startHttpRequest = () => {
-    this.http.get(`${this.apiUrl}/chart`)
-      .subscribe((res:any) => {
-        console.log(res);
-      })
+  GetAttentionsByTimeLine(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetAttentionsByTimeLine`);
+  }
+
+  GetNumberAttentionsByCity(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetNumberAttentionsByCity`);
+  }
+
+  GetLogguedByHealthCareStaff(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetLogguedByHealthCareStaff`);
+  }
+  GetAttentionsFinishByHealthCareStaff(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetAttentionsFinishByHealthCareStaff`);
   }
 }

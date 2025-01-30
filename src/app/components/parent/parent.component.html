@@ -1,0 +1,13 @@
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
+    <app-bar-chart [labels]="states" [chartLabel]="'Atenciones por estado'" [data]="countBystates" [backgroundColor]="colorsBackGroundstates" [borderColor]="borderColorstates"></app-bar-chart>
+    <app-bar-chart [labels]="cities" [chartLabel]="'Atenciones por ciudad'" [data]="countByCities" [backgroundColor]="colorsBackGroundCities" [borderColor]="borderColorCities"></app-bar-chart>
+    <app-bar-chart [labels]="times" [chartLabel]="'Atenciones por día'" [data]="countBytimes" [backgroundColor]="colorsBackGroundtimes" [borderColor]="borderColortimes"></app-bar-chart>
+    <app-bar-chart [labels]="AttentionsFinishByHealthCareStaff" [chartLabel]="'Atenciones por médico'" [data]="countByAttentionsFinishByHealthCareStaff" [backgroundColor]="colorsBackGroundAttentionsFinishByHealthCareStaff" [borderColor]="borderColorAttentionsFinishByHealthCareStaff"></app-bar-chart>
+    <app-pie-chart [labels]="loggued" [unitLabel]="'Users'" [data]="countByloggued" [chartLabel]="'Usuarios'" [backgroundColor]="colorsBackGroundloggued" [borderColor]="borderColorloggued"></app-pie-chart>
+    <app-line-chart [ChartDataLine]="cpuChartData" [data]="dataCPU" [labels]="labelsCPU" [chartLabel]="'Uso de CPU (%)'"></app-line-chart>
+    
+    <!-- <app-cpu-system-char t></app-cpu-system-chart>
+    <app-attentions-by-time-line></app-attentions-by-time-line>
+    <app-chart-quantity-by-state></app-chart-quantity-by-state>
+    <app-number-attentions-by-city></app-number-attentions-by-city> -->
+</div>
