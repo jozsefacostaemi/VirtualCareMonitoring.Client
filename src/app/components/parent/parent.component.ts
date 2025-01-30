@@ -42,19 +42,37 @@ export class ParentComponent implements OnInit {
   public colorsBackGroundloggued: string[] = []
   public borderColorloggued: string[] = []
 
+  //GetPercentAttention
+  public percentAttention: string[] = []
+  public countBypercentAttention: number[] = []
+  public colorsBackGroundpercentAttention: string[] = []
+  public borderColorpercentAttention: string[] = []
+
+  //GetNumberActive
+  public number: string[] = []
+  public countBynumber: number[] = []
+  public colorsBackGroundnumber: string[] = []
+  public borderColornumber: string[] = []
+
   //GetAttentionsFinishByHealthCareStaff
   public AttentionsFinishByHealthCareStaff: string[] = []
   public countByAttentionsFinishByHealthCareStaff: number[] = []
   public colorsBackGroundAttentionsFinishByHealthCareStaff: string[] = []
   public borderColorAttentionsFinishByHealthCareStaff: string[] = []
 
+  //GetQueuesActive
+  public queues: string[] = []
+  public countByqueues: number[] = []
+  public colorsBackGroundqueues: string[] = []
+  public borderColorqueues: string[] = []
+
   //GetCPUStatus
   public labelsCPU: string[] = [];
   public dataCPU: number[] = [];
-   public cpuChartData: ChartData<'line'> = {
-      labels: Array(10).fill(''),
-      datasets: [{ data: Array(10).fill(0), label: 'Uso de CPU (%)', borderColor: '#f54248', fill: true }],
-    };
+  public cpuChartData: ChartData<'line'> = {
+    labels: Array(10).fill(''),
+    datasets: [{ data: Array(10).fill(0), label: 'Uso de CPU (%)', borderColor: '#f54248', fill: true }],
+  };
 
   ngOnInit(): void {
     this.getCPUStatus();
@@ -69,6 +87,9 @@ export class ParentComponent implements OnInit {
     this.GetAttentionsByTime();
     this.GetLogguedByHealthCareStaff();
     this.GetAttentionsFinishByHealthCareStaff();
+    this.GetQueuesActive();
+    this.GetNumberActive();
+    this.GetPercentAttentionsFinish();
   }
 
   /** Función que obtiene el estado de la CPU */
@@ -88,7 +109,7 @@ export class ParentComponent implements OnInit {
       });
     }, 1000);  // Actualiza cada segundo
   }
-  
+
 
   /** Función que obtiene el listado de medicos con las atenciones realizadas */
   GetAttentionsFinishByHealthCareStaff() {
@@ -164,6 +185,46 @@ export class ParentComponent implements OnInit {
         default:
           console.log('Evento no reconocido');
           break;
+      }
+    });
+  }
+
+  /** Función que consulta las colas activas en el sistema */
+  GetQueuesActive() {
+    this.chartService.GetQueuesActive().subscribe((response: MetadataResponse<any>) => {
+      if (response.success && response.data) {
+        console.log(response)
+        this.queues = response.data.map((item: any) => item.value);
+        this.countByqueues = response.data.map((item: any) => item.count);
+        this.colorsBackGroundqueues = response.data.map((item: any) => item.background);
+        this.borderColorqueues = response.data.map((item: any) => item.border);
+      }
+    });
+  }
+
+  
+  /** Función que consulta las colas activas en el sistema */
+  GetPercentAttentionsFinish() {
+    this.chartService.GetPercentAttentionsFinish().subscribe((response: MetadataResponse<any>) => {
+      if (response.success && response.data) {
+        console.log(response)
+        this.percentAttention = response.data.map((item: any) => item.value);
+        this.countBypercentAttention = response.data.map((item: any) => item.count);
+        this.colorsBackGroundpercentAttention = response.data.map((item: any) => item.background);
+        this.borderColorpercentAttention = response.data.map((item: any) => item.border);
+      }
+    });
+  }
+
+  /** Función que consulta las colas activas en el sistema */
+  GetNumberActive() {
+    this.chartService.GetNumberActive().subscribe((response: MetadataResponse<any>) => {
+      if (response.success && response.data) {
+        console.log(response)
+        this.number = response.data.map((item: any) => item.value);
+        this.countBynumber = response.data.map((item: any) => item.count);
+        this.colorsBackGroundnumber = response.data.map((item: any) => item.background);
+        this.borderColornumber = response.data.map((item: any) => item.border);
       }
     });
   }

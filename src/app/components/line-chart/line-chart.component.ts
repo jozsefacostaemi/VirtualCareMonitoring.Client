@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
@@ -5,17 +6,28 @@ import { NgChartsModule } from 'ng2-charts';
 @Component({
   selector: 'app-line-chart',
   standalone: true,
-  imports: [NgChartsModule],
+  imports: [NgChartsModule, CommonModule],
   templateUrl: './line-chart.component.html',
   styleUrl: './line-chart.component.css'
 })
 export class LineChartComponent implements OnChanges {
 
-  @Input() labels: string[] = ['1','2','3'] //Valores de labels dataset
+  @Input() labels: string[] = ['1', '2', '3'] //Valores de labels dataset
   @Input() chartLabel: string = '';  // Etiqueta del dataset
-  @Input() data: number[] = [6,5,9];  // Datos de las barras
+  @Input() data: number[] = [6, 5, 9];  // Datos de las barras
   @Input() backgroundColor: string = 'rgb(75, 192, 192)';  // Colores de fondo
   @Input() borderColor: string = 'rgb(75, 192, 192)';  // Colores de borde
+  @Input() heightChart: number = 150; // Valor inicial de height
+  @Input() widthChart: number = 300;  // Valor inicial de width
+
+  get divStyle() {
+    return {
+      width: `${this.widthChart}px`,
+      height: `${this.heightChart}px`
+    };
+  }
+
+
   @Input() ChartDataLine: ChartData<'line'> = {
     labels: this.labels, // Etiquetas de los meses
     datasets: [{

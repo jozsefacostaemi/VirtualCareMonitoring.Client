@@ -1,13 +1,34 @@
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
-    <app-bar-chart [labels]="states" [chartLabel]="'Atenciones por estado'" [data]="countBystates" [backgroundColor]="colorsBackGroundstates" [borderColor]="borderColorstates"></app-bar-chart>
-    <app-bar-chart [labels]="cities" [chartLabel]="'Atenciones por ciudad'" [data]="countByCities" [backgroundColor]="colorsBackGroundCities" [borderColor]="borderColorCities"></app-bar-chart>
-    <app-bar-chart [labels]="times" [chartLabel]="'Atenciones por día'" [data]="countBytimes" [backgroundColor]="colorsBackGroundtimes" [borderColor]="borderColortimes"></app-bar-chart>
-    <app-bar-chart [labels]="AttentionsFinishByHealthCareStaff" [chartLabel]="'Atenciones por médico'" [data]="countByAttentionsFinishByHealthCareStaff" [backgroundColor]="colorsBackGroundAttentionsFinishByHealthCareStaff" [borderColor]="borderColorAttentionsFinishByHealthCareStaff"></app-bar-chart>
-    <app-pie-chart [labels]="loggued" [unitLabel]="'Users'" [data]="countByloggued" [chartLabel]="'Usuarios'" [backgroundColor]="colorsBackGroundloggued" [borderColor]="borderColorloggued"></app-pie-chart>
-    <app-line-chart [ChartDataLine]="cpuChartData" [data]="dataCPU" [labels]="labelsCPU" [chartLabel]="'Uso de CPU (%)'"></app-line-chart>
-    
-    <!-- <app-cpu-system-char t></app-cpu-system-chart>
-    <app-attentions-by-time-line></app-attentions-by-time-line>
-    <app-chart-quantity-by-state></app-chart-quantity-by-state>
-    <app-number-attentions-by-city></app-number-attentions-by-city> -->
+<div class="cpu-monitor-container">
+    <h3>Monitoreo de CPU</h3>
+    <app-line-chart [heightChart]="350" [widthChart]="700" [ChartDataLine]="cpuChartData" [data]="dataCPU" [labels]="labelsCPU" [chartLabel]="'Uso de CPU (%)'"></app-line-chart>
+  </div>
+<div class="cpu-monitor-container">
+    <h3>Información de atenciones</h3>
+    <app-bar-chart [heightChart]="220" [widthChart]="400" [labels]="states" [chartLabel]="'Atenciones por estado'" [data]="countBystates" [backgroundColor]="colorsBackGroundstates" [borderColor]="borderColorstates"></app-bar-chart>
+    <app-bar-chart [heightChart]="220" [widthChart]="400" [labels]="cities" [chartLabel]="'Atenciones por ciudad'" [data]="countByCities" [backgroundColor]="colorsBackGroundCities" [borderColor]="borderColorCities"></app-bar-chart>
+    <app-bar-chart [heightChart]="220" [widthChart]="400" [labels]="times" [chartLabel]="'Atenciones por día'" [data]="countBytimes" [backgroundColor]="colorsBackGroundtimes" [borderColor]="borderColortimes"></app-bar-chart>
+    <app-bar-chart [heightChart]="220" [widthChart]="400" [labels]="AttentionsFinishByHealthCareStaff" [chartLabel]="'Atenciones por médico'" [data]="countByAttentionsFinishByHealthCareStaff" [backgroundColor]="colorsBackGroundAttentionsFinishByHealthCareStaff" [borderColor]="borderColorAttentionsFinishByHealthCareStaff"></app-bar-chart>
 </div>
+<div class="cpu-monitor-container"> 
+    <h3>Colas Activas</h3>
+    <app-bar-chart [heightChart]="440" [widthChart]="850" [labels]="queues" [chartLabel]="'Colas Activas'" [data]="countByqueues" [backgroundColor]="colorsBackGroundqueues" [borderColor]="borderColorqueues"></app-bar-chart>
+</div>
+
+<div class="cpu-monitor-container">
+    <h3>Usuarios del sistema</h3>
+    <app-pie-chart [heightChart]="250" [widthChart]="250" [labels]="loggued" [unitLabel]="'Usuarios'" [data]="countByloggued" [chartLabel]="'Usuarios'" [backgroundColor]="colorsBackGroundloggued" [borderColor]="borderColorloggued"></app-pie-chart>
+</div>
+
+<div class="cpu-monitor-container">
+    <h3>Número de colas</h3>
+    <app-pie-chart [heightChart]="250" [widthChart]="250" [labels]="number" [unitLabel]="'Colas'" [data]="countBynumber" [chartLabel]="'Usuarios'" [backgroundColor]="colorsBackGroundnumber" [borderColor]="borderColornumber"></app-pie-chart>
+</div>
+
+<div class="cpu-monitor-container">
+    <h3>Porcentaje de atenciones</h3>
+    <app-pie-chart [heightChart]="250" [widthChart]="250" [labels]="percentAttention" [unitLabel]="'Porcentaje'" [data]="countBypercentAttention" [chartLabel]="'Atenciónes finalizadas'" [backgroundColor]="colorsBackGroundpercentAttention" [borderColor]="borderColorpercentAttention"></app-pie-chart>
+</div>
+
+
+
+    

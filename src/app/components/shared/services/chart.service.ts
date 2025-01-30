@@ -34,4 +34,15 @@ export class ChartsService {
   GetAttentionsFinishByHealthCareStaff(): Observable<MetadataResponse<any>> {
     return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetAttentionsFinishByHealthCareStaff`);
   }
+
+  GetQueuesActive(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetQueuesActive`);
+  }
+
+  GetNumberActive(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetNumberActive`);
+  }
+  GetPercentAttentionsFinish(): Observable<MetadataResponse<any>> {
+    return this.http.get<MetadataResponse<any>>(`${this.apiUrl}/Monitoring/GetPercentAttentionsFinish`);
+  }
 }
